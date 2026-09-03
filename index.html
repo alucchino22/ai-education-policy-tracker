@@ -24,6 +24,41 @@
     font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
     line-height:1.5;
   }
+  /* NAV */
+  #topNav{
+    position:sticky;top:0;z-index:100;
+    background:var(--navy);
+    display:flex;flex-wrap:wrap;gap:2px;
+    padding:0 14px;
+    overflow-x:auto;
+    box-shadow:0 1px 4px rgba(0,0,0,.15);
+  }
+  #topNav a{
+    color:#CBD0EE;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    padding:13px 12px;
+    white-space:nowrap;
+    border-bottom:2px solid transparent;
+  }
+  #topNav a:hover{color:#fff;border-bottom-color:var(--orange);}
+
+  /* COLLAPSIBLE SECTIONS */
+  .section-head{
+    cursor:pointer;
+    user-select:none;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .section-head .chevron{
+    font-size:13px;color:var(--muted);flex-shrink:0;margin-top:4px;
+    transition:transform .15s ease;
+  }
+  section > .wrap.collapsed .chevron{transform:rotate(-90deg);}
+  section > .wrap.collapsed > *:not(.section-head){display:none;}
   h1,h2,h3,.serif{
     font-family:'Liberation Serif','Times New Roman',serif;
     font-weight:700;
@@ -202,9 +237,17 @@
   .legend-row{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:14px;}
   .legend-row span{display:flex;align-items:center;gap:6px;}
   .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  #mapContainer svg{width:100%;height:auto;display:block;}
+  #mapContainer path{stroke:#fff;stroke-width:1;cursor:pointer;transition:opacity .1s;}
+  #mapContainer path:hover{opacity:.75;}
+  #mapContainer path.selected{stroke:var(--navy);stroke-width:2;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 <body>
+
+<nav id="topNav"></nav>
 
 <header class="hero">
   <div class="wrap">
@@ -218,8 +261,11 @@
 <section id="activity">
   <div class="wrap">
     <div class="section-head">
+      <div>
       <h2>Recent activity</h2>
       <p>What the daily check found and applied automatically &mdash; high-confidence updates (an official source, or independent corroboration) are published here directly. Nothing in this list needed a person to confirm it.</p>
+      </div>
+      <span class="chevron">&#9662;</span>
     </div>
     <div class="activity-feed" id="activityFeed"></div>
   </div>
@@ -228,8 +274,11 @@
 <section class="alt" id="pending" style="display:none;">
   <div class="wrap">
     <div class="section-head">
+      <div>
       <h2>Needs review</h2>
       <p>Single-source or lower-confidence findings, held here until confirmed rather than published automatically.</p>
+      </div>
+      <span class="chevron">&#9662;</span>
     </div>
     <div id="pendingList"></div>
   </div>
@@ -238,22 +287,30 @@
 <section id="federal">
   <div class="wrap">
     <div class="section-head">
+      <div>
       <h2>Federal landscape</h2>
       <p>Two federal actions currently anchor the K&ndash;12 AI policy environment: an executive order setting national priorities, and a Department of Education grant-priority rule that operationalizes it.</p>
+      </div>
+      <span class="chevron">&#9662;</span>
     </div>
     <div class="fed-grid" id="fedGrid"></div>
   </div>
 </section>
 
-<section class="alt" id="states">
+<section class="alt" id="statemap">
   <div class="wrap">
     <div class="section-head">
+      <div>
       <h2>State-level guidance &amp; legislation</h2>
-      <p>All 50 states, classified by whether a state education agency has published K&ndash;12 AI guidance, whether the legislature has enacted a mandate without agency guidance yet, or whether neither has been identified in this research pass.</p>
+      <p>All 50 states, classified by whether a state education agency has published K&ndash;12 AI guidance, whether the legislature has enacted a mandate without agency guidance yet, or whether neither has been identified in this research pass. Click any state for its full status, source, and last-verified date.</p>
+      </div>
+      <span class="chevron">&#9662;</span>
     </div>
-    <div class="controls" id="stateFilters"></div>
-    <div class="state-grid" id="stateGrid"></div>
-    <div class="legend-row">
+    <div id="mapWrap" style="max-width:820px;margin:0 auto;">
+      <div id="mapContainer"></div>
+    </div>
+    <div id="mapDetail" class="fed-card" style="display:none;max-width:460px;margin:18px auto 0;"></div>
+    <div class="legend-row" style="justify-content:center;">
       <span><span class="legend-dot" style="background:var(--green)"></span>State DOE/agency guidance published</span>
       <span><span class="legend-dot" style="background:var(--blue)"></span>Enacted legislative mandate, agency guidance pending</span>
       <span><span class="legend-dot" style="background:var(--orange)"></span>Bill(s) pending, not yet enacted</span>
@@ -265,21 +322,27 @@
 <section id="districts">
   <div class="wrap">
     <div class="section-head">
-      <h2>Bellwether districts</h2>
-      <p>A seed set of large or influential districts whose policies function as de facto regional standards &mdash; especially in states without statewide guidance. Not comprehensive; see methodology below for how to grow this list.</p>
+      <div>
+      <h2>Districts</h2>
+      <p>Started as a seed set of 7 bellwether districts; grows automatically as the daily national scan discovers and confirms new district-level action. Not a census of all ~13,000 U.S. districts &mdash; see methodology below.</p>
+      </div>
+      <span class="chevron">&#9662;</span>
     </div>
     <div class="district-list" id="districtList"></div>
   </div>
 </section>
 
-<section class="alt">
+<section class="alt" id="methodology">
   <div class="wrap">
+    <div class="section-head">
+      <div><h2>Methodology &amp; how this stays current</h2></div>
+      <span class="chevron">&#9662;</span>
+    </div>
     <div class="method">
-      <h3>Methodology &amp; how this stays current</h3>
       <ul>
         <li><strong>This is a live feed, not a fixed snapshot.</strong> A daily job checks every state and federal source against its official page and recent news, and separately scans nationally for district stories that aren't tracked yet. High-confidence findings (an official source, or independent corroboration) are published directly to the data behind this page; lower-confidence findings wait in "Needs review" above.</li>
         <li><strong>What counts as high confidence:</strong> a primary source (a .gov page, an official agency/board/mayor's-office announcement) or the same fact reported independently by 2+ reputable outlets. A single news outlet with no official confirmation is held for review rather than published automatically.</li>
-        <li><strong>District coverage grows as it's discovered.</strong> The seed set below started as 7 bellwether districts; the daily national scan adds high-confidence new districts directly, and holds lower-confidence ones for review. It will never be a full census of ~13,000 U.S. districts &mdash; large or well-covered districts are what a national news scan can realistically catch.</li>
+        <li><strong>District coverage grows as it's discovered.</strong> The seed set started as 7 bellwether districts; the daily national scan adds high-confidence new districts directly, and holds lower-confidence ones for review. It will never be a full census of ~13,000 U.S. districts &mdash; large or well-covered districts are what a national news scan can realistically catch.</li>
         <li><strong>"No action identified" is not the same as "no policy exists."</strong> A state may have district-level or informal guidance not yet captured here; treat blank states as gaps to verify, not confirmed negatives.</li>
       </ul>
     </div>
@@ -370,7 +433,7 @@ function renderActivity(){
         <span class="aentity">${esc(a.entity)}</span>
         <span class="abadge">${a.change_type === 'new_entity' ? 'new' : 'updated'}</span>
         <div class="anote">${esc(a.note)}</div>
-        ${a.source_url ? `<div class="asrc"><a href="${a.source_url}" target="_blank" rel="noopener">Source &rarr;</a></div>` : ''}
+        ${a.source_url ? `<div class="asrc"><a href="${a.source_url}" target="_blank" rel="noopener">Source &rarr;</a>${a.evidence_published_date ? ` &middot; published ${esc(a.evidence_published_date)}` : ''}</div>` : ''}
       </div>
     </div>
   `).join('');
@@ -409,45 +472,6 @@ function renderFederal(){
   `).join('');
 }
 
-let activeFilter = 'all';
-function renderStateFilters(){
-  const opts = [
-    {key:'all', label:'All 50 states'},
-    {key:'guidance', label:'Guidance published', color:'var(--green)'},
-    {key:'mandate', label:'Mandate, guidance pending', color:'var(--blue)'},
-    {key:'pending', label:'Bill(s) pending', color:'var(--orange)'},
-    {key:'none', label:'No action identified', color:'#C7C4BA'}
-  ];
-  document.getElementById('stateFilters').innerHTML = opts.map(o=>
-    `<div class="chip ${o.key==='all'?'active':''}" data-key="${o.key}">
-      ${o.color?`<span class="dot" style="background:${o.color}"></span>`:''}${o.label}
-    </div>`
-  ).join('');
-  document.querySelectorAll('.chip').forEach(chip=>{
-    chip.addEventListener('click', ()=>{
-      activeFilter = chip.dataset.key;
-      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-      chip.classList.add('active');
-      renderStateGrid();
-    });
-  });
-}
-
-function renderStateGrid(){
-  const states = WATCHLIST.filter(e => e.level === 'state');
-  const grid = document.getElementById('stateGrid');
-  grid.innerHTML = states.map(s=>{
-    const meta = catMeta(s.category);
-    const hidden = (activeFilter!=='all' && activeFilter!==s.category) ? 'hidden' : '';
-    return `<div class="state-card ${meta.cls}" ${hidden}>
-      <h4>${esc(s.entity)}</h4>
-      <div class="tag">${meta.label}</div>
-      <p>${esc(s.note)}</p>
-      ${s.source_url?`<a class="link" href="${s.source_url}" target="_blank" rel="noopener">Source &rarr;</a>`:''}
-    </div>`;
-  }).join('');
-}
-
 function renderDistricts(){
   const districts = WATCHLIST.filter(e => e.level === 'district');
   document.getElementById('districtList').innerHTML = districts.map(d=>`
@@ -467,16 +491,103 @@ function renderFooter(){
     `Sources cited inline throughout. Compiled for OFF internal program use &middot; not for external distribution without review &middot; data current as of ${esc(latest || 'unknown')}.`;
 }
 
+function renderStateMap(){
+  const stateData = {};
+  WATCHLIST.filter(e => e.level === 'state').forEach(e => { stateData[e.entity] = e; });
+
+  const container = document.getElementById('mapContainer');
+  const width = 800, height = 500;
+  const svg = d3.select(container).append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
+
+  d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
+    const geo = topojson.feature(us, us.objects.states);
+    const projection = d3.geoAlbersUsa().fitSize([width, height], geo);
+    const pathGen = d3.geoPath().projection(projection);
+
+    let selected = null;
+
+    svg.selectAll('path')
+      .data(geo.features)
+      .join('path')
+      .attr('d', pathGen)
+      .attr('fill', d => {
+        const s = stateData[d.properties.name];
+        return s ? catMeta(s.category).color : '#E4E2DB';
+      })
+      .attr('data-name', d => d.properties.name)
+      .append('title')
+      .text(d => {
+        const s = stateData[d.properties.name];
+        return s ? `${d.properties.name}: ${catMeta(s.category).label}` : `${d.properties.name}: not tracked`;
+      });
+
+    svg.selectAll('path').on('click', function(event, d){
+      if (selected) selected.classList.remove('selected');
+      this.classList.add('selected');
+      selected = this;
+      showMapDetail(d.properties.name, stateData[d.properties.name]);
+    });
+  }).catch(() => {
+    container.innerHTML = '<p class="empty-note">Map data failed to load — check your connection and refresh.</p>';
+  });
+}
+
+function showMapDetail(name, s){
+  const panel = document.getElementById('mapDetail');
+  panel.style.display = '';
+  if (!s) {
+    panel.innerHTML = `<h3>${esc(name)}</h3><p>Not currently tracked in this dataset.</p>`;
+    return;
+  }
+  const meta = catMeta(s.category);
+  panel.innerHTML = `
+    <div class="date">${meta.label}</div>
+    <h3>${esc(name)}</h3>
+    <p>${esc(s.note)}</p>
+    <div class="src">
+      ${s.source_url ? `<a href="${s.source_url}" target="_blank" rel="noopener">Source &rarr;</a> &middot; ` : ''}
+      last verified ${esc(s.last_verified_date || 'unknown')}
+    </div>
+  `;
+}
+
+function initCollapsible(){
+  document.querySelectorAll('section > .wrap > .section-head').forEach(head => {
+    head.addEventListener('click', () => {
+      head.parentElement.classList.toggle('collapsed');
+    });
+  });
+}
+
+function renderNav(){
+  const links = [
+    {id: 'activity', label: 'Activity'},
+    {id: 'pending', label: 'Needs Review', onlyIf: () => document.getElementById('pending').style.display !== 'none'},
+    {id: 'federal', label: 'Federal'},
+    {id: 'statemap', label: 'States'},
+    {id: 'districts', label: 'Districts'},
+    {id: 'methodology', label: 'Methodology'}
+  ];
+  const nav = document.getElementById('topNav');
+  nav.innerHTML = links
+    .filter(l => !l.onlyIf || l.onlyIf())
+    .map(l => `<a href="#${l.id}">${l.label}</a>`)
+    .join('');
+}
+
 (async function init(){
   await loadData();
   renderStats();
   renderActivity();
   renderPending();
   renderFederal();
-  renderStateFilters();
-  renderStateGrid();
+  renderStateMap();
   renderDistricts();
   renderFooter();
+  renderNav();
+  initCollapsible();
 })();
 </script>
 </body>
