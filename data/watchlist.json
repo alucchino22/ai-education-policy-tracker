@@ -50,11 +50,11 @@
   {
     "entity": "Charlotte-Mecklenburg Schools",
     "level": "district",
-    "category": "guidance",
-    "note": "Process-forward example: surveyed the community (~10,000 responses) before drafting policy, formed a cross-functional AI governance team, then piloted tools in 30 of 185 schools.",
+    "category": "mandate",
+    "note": "The CMS Board of Education unanimously passed a formal AI policy on October 28, 2025, governing responsible AI use by staff and students, establishing an AI Review Committee to approve all AI-powered tools, and mandating superintendent approval for any AI system handling student or staff data. This supersedes the earlier process/guidance-only stage described in the stored note.",
     "meta": "~140K students · NC",
-    "source_url": "https://www.k12dive.com/news/ai-is-moving-quickly-how-can-districts-keep-up/816265/",
-    "last_verified_date": "2026-09-02",
+    "source_url": "https://www.wfae.org/education/2025-10-28/cms-passes-new-policy-on-ai-use-in-schools",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
@@ -70,30 +70,30 @@
   {
     "entity": "Boston Public Schools",
     "level": "district",
-    "category": "guidance",
-    "note": "Original 2023 guidance updated 2025 after input from 500+ staff/students/families; further revision proposed to School Committee May 2026. Five-pillar framework; bans non-consensual AI deepfakes of real people.",
+    "category": "pending",
+    "note": "In May 2026, BPS presented a formal AI policy proposal to the School Committee—upgrading from guidance to a proposed mandate—with a School Committee vote planned for June 2026; a final adopted policy document ('Spring 2026 BPS AI Policy') is now hosted on the BPS website, though vote confirmation is not yet reflected on the source tracker. The proposal bans non-school-sanctioned AI use, prohibits non-consensual deepfakes, bars AI as the sole basis for grading/discipline, and mandates AI literacy training district-wide.",
     "meta": "~54K students",
-    "source_url": "https://learn.playlab.ai/resources/aipolicies",
-    "last_verified_date": "2026-09-02",
+    "source_url": "https://resources.finalsite.net/images/v1781118968/bostonpublicschoolsorg/n10whyxn8axn0urvgidh/FINALAIPolicy.pdf",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
     "entity": "Orange County Public Schools (FL)",
     "level": "district",
-    "category": "guidance",
-    "note": "Released district-level AI policy functioning as informal guidance for other Florida districts in the absence of statewide DOE guidance.",
+    "category": "mandate",
+    "note": "The Orange County School Board formally adopted its first AI policy on July 28, 2026, effective August 11, 2026, establishing binding rules for students and staff under a 'Human-in-the-Loop' philosophy — including prohibited uses, disciplinary consequences up to expulsion or termination, and mandatory disclosure of AI use. This replaces the prior informal guidance stance.",
     "meta": "~200K students · 8th largest U.S. district",
-    "source_url": "https://www.techpolicy.press/in-the-us-caution-rules-on-ai-ahead-of-k12-school-year/",
-    "last_verified_date": "2026-09-02",
+    "source_url": "https://www.clickorlando.com/news/local/2026/08/13/ai-in-central-florida-classrooms-a-district-by-district-policy-breakdown/",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
     "entity": "Alabama",
     "level": "state",
-    "category": "guidance",
-    "note": "ALSDE AI Policy Template (June 2024), 8 governance pillars.",
-    "source_url": "https://www.aiforeducation.io/s/AL-AI_PolicyTemplate_UPDATED_20240524.docx",
-    "last_verified_date": "2026-09-02",
+    "category": "mandate",
+    "note": "Alabama enacted H.B. 329 in 2026, requiring all public school students to complete an approved computer science course that includes AI instruction as a graduation requirement (effective for class of 2032). The ALSDE June 2024 guidance template remains in place, but the state has moved beyond guidance to a legislative mandate.",
+    "source_url": "https://www.future-ed.org/legislative-tracker-2026-state-ai-in-education-bills/",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
@@ -109,9 +109,9 @@
     "entity": "Arizona",
     "level": "state",
     "category": "guidance",
-    "note": "Guidance via Arizona Institute for Education and the Economy.",
-    "source_url": "https://www.aiforeducation.io/s/AZ-NAUGAIGuide.pdf",
-    "last_verified_date": "2026-09-02",
+    "note": "The Arizona Institute for Education and the Economy (AIEE) at Northern Arizona University released a fully rewritten 2026-2027 Generative AI Guidance for Arizona Schools and School Systems in June 2026, replacing earlier versions; it remains non-prescriptive guidance, not a mandate. A legislative attempt to convert this to a mandate (HB 4005) was vetoed by Gov. Hobbs on June 19, 2026.",
+    "source_url": "https://www.signalsaz.com/articles/arizona-schools-get-new-ai-guidance-for-the-future/",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
@@ -127,9 +127,9 @@
     "entity": "California",
     "level": "state",
     "category": "guidance",
-    "note": "CDE guidance (updated April 2026) tied to CA computer-science standards.",
-    "source_url": "https://www.aiforeducation.io/s/Artificial-Intelligence-in-California_Learning-with-AI-Learning-about-AI-CDE-September-2023.pdf",
-    "last_verified_date": "2026-09-02",
+    "note": "CDE released comprehensive updated AI guidance (December 31, 2025/January 2026) and a new Model Policy for AI in Education (posted June 25, 2026) under SB 1288 (2024); both remain explicitly non-mandatory under Education Code Section 33308.5. The stored note's reference to the September 2023 PDF and 'April 2026 update tied to CS standards' is outdated and understates the scope of current CDE activity.",
+    "source_url": "https://www.cde.ca.gov/nr/el/le/yr26ltr0706.asp",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
@@ -144,10 +144,10 @@
   {
     "entity": "Connecticut",
     "level": "state",
-    "category": "guidance",
-    "note": "Commission for Educational Technology guidance.",
-    "source_url": "https://portal.ct.gov/das/ctedtech/commission-for-educational-technology/initiatives/artificial-intelligence",
-    "last_verified_date": "2026-09-02",
+    "category": "mandate",
+    "note": "Connecticut enacted Public Act 26-15 (SB 5, the CART Act), signed June 2, 2026, creating binding statewide AI mandates covering K-12 education (integrating AI into computer-science standards), AI companion chatbot rules for minors, and provenance requirements. Separately, the CT State Department of Education — in partnership with the Commission for Educational Technology — is also actively drafting comprehensive K-12 AI guidance; the Commission's own page still reflects the older guidance framing, lagging behind the enacted law.",
+    "source_url": "https://www.ropesgray.com/en/insights/alerts/2026/06/connecticut-enacts-sweeping-ai-law-covering-employment-healthcare-and-online-safety",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
@@ -162,10 +162,10 @@
   {
     "entity": "Florida",
     "level": "state",
-    "category": "pending",
-    "note": "SB 1194 pending; no DOE guidance identified.",
-    "source_url": "https://www.future-ed.org/legislative-tracker-2026-state-ai-in-education-bills/",
-    "last_verified_date": "2026-09-02",
+    "category": "guidance",
+    "note": "SB 1194 died in committee on March 13, 2026, but the Florida DOE is now actively directing K-12 districts to incorporate AI rules into internet safety policies (parental notification, opt-out, PreK-5 extra review), with Education Commissioner Henry Mack approving the rule and the State Board of Education scheduled to vote on Sept. 16, 2026. The stored note's claim of 'no DOE guidance identified' is no longer accurate.",
+    "source_url": "https://www.cbsnews.com/miami/news/florida-state-board-education-ai-school-rule-vote/",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
@@ -189,19 +189,19 @@
   {
     "entity": "Idaho",
     "level": "state",
-    "category": "mandate",
-    "note": "Enacted 2026 legislation (per ExcelinEd); agency guidance not yet published.",
-    "source_url": "https://excelined.org/2026/05/26/state-k-12-ai-policy-in-2026-milestones/",
-    "last_verified_date": "2026-09-02",
+    "category": "guidance",
+    "note": "Idaho SB 1227, signed March 2026 and effective July 1, 2026, mandated a statewide AI framework for K-12 schools. The Idaho State Board of Education unanimously approved the framework on August 12, 2026, with published guidance covering teacher training, age-appropriate instruction, and model district policy language.",
+    "source_url": "https://www.boisestatepublicradio.org/politics-government/2026-08-13/idaho-board-of-education-ai-guidelines",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
     "entity": "Illinois",
     "level": "state",
     "category": "guidance",
-    "note": "ISBE guidance (June 2026, 408pp.), responds to Public Act 104-0399.",
-    "source_url": "https://www.isbe.net/Documents/AIGuidance.pdf",
-    "last_verified_date": "2026-09-02",
+    "note": "ISBE published a ~409-page AI guidance document on or around July 1–9, 2026, pursuant to Public Act 104-0399 (SB 1920); document is non-mandatory recommendations for districts, not a mandate. A separate, very recent development (Sept. 1, 2026, per Chalkbeat) is that a nonprofit is circulating a pledge among Chicago school board candidates to ban AI use in schools for three years, but this is an advocacy campaign, not an enacted policy. The stored note's page-count (408pp.) is slightly inconsistent with multiple sources citing 409pp., but this is a minor discrepancy and does not change the category.",
+    "source_url": "https://www.chalkbeat.org/chicago/2026/07/10/illinois-teachers-get-guidance-on-how-to-use-ai-in-schools/",
+    "last_verified_date": "2026-09-03",
     "needs_review": false
   },
   {
