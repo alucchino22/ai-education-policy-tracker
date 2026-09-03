@@ -1,0 +1,540 @@
+[
+  {
+    "entity": "Federal — Executive Order 14277",
+    "level": "federal",
+    "category": "guidance",
+    "note": "Establishes White House Task Force on AI Education; directs Presidential AI Challenge and grant/apprenticeship prioritization.",
+    "source_url": "https://www.presidency.ucsb.edu/documents/executive-order-14277-advancing-artificial-intelligence-education-for-american-youth",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Federal — ED Supplemental Priority Rule",
+    "level": "federal",
+    "category": "guidance",
+    "note": "Final rule effective May 13, 2026, prioritizing AI literacy/ethical use in ED discretionary grant scoring.",
+    "source_url": "https://www.k12dive.com/news/how-the-education-department-will-prioritize-ai-in-awarding-grants/817340/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "NYC Public Schools",
+    "level": "district",
+    "category": "mandate",
+    "note": "One-year moratorium on student-facing generative AI for grades 2K-8, effective 2026-27 (~600K students); high-schoolers get AI-literacy modules and 5 capped pilot programs. Announced Sept 2, 2026 by Mayor Mamdani and Chancellor Samuels, superseding the earlier delayed 'Playbook.'",
+    "meta": "~1.1M students · largest U.S. district",
+    "source_url": "https://www.nyc.gov/mayors-office/news/2026/09/mayor-mamdani-and-chancellor-samuels-put-students-first-with-nat",
+    "last_verified_date": "2026-09-03",
+    "needs_review": false
+  },
+  {
+    "entity": "Los Angeles Unified",
+    "level": "district",
+    "category": "mandate",
+    "note": "Generative AI blocked on all district-issued student devices; surfaced Sept 2-3, 2026 at the first meeting of a new ad hoc Generative AI Committee (recommendations due by end of school year). Supersedes prior 'no standalone AI policy' status.",
+    "meta": "~430K students · 2nd largest U.S. district",
+    "source_url": "https://laist.com/news/education/lausd-students-barred-artificial-intelligence-tools",
+    "last_verified_date": "2026-09-03",
+    "needs_review": false
+  },
+  {
+    "entity": "Chicago Public Schools",
+    "level": "district",
+    "category": "guidance",
+    "note": "Guidebook phased full GenAI integration in for 2025-26 after a 2024-25 learning period, backed by a district Ed Tech Catalog of approved tools.",
+    "meta": "~320K students",
+    "source_url": "https://www.aiforeducation.io/blog/chicago-public-schools-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Charlotte-Mecklenburg Schools",
+    "level": "district",
+    "category": "guidance",
+    "note": "Process-forward example: surveyed the community (~10,000 responses) before drafting policy, formed a cross-functional AI governance team, then piloted tools in 30 of 185 schools.",
+    "meta": "~140K students · NC",
+    "source_url": "https://www.k12dive.com/news/ai-is-moving-quickly-how-can-districts-keep-up/816265/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Miami-Dade County Public Schools",
+    "level": "district",
+    "category": "pending",
+    "note": "Board directed the superintendent (Aug. 2025) to develop a tiered AI framework; no public guidance released as of mid-2026. Interim Google/Gemini partnership for high schools.",
+    "meta": "~330K students · 3rd largest U.S. district",
+    "source_url": "https://www.techpolicy.press/in-the-us-caution-rules-on-ai-ahead-of-k12-school-year/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Boston Public Schools",
+    "level": "district",
+    "category": "guidance",
+    "note": "Original 2023 guidance updated 2025 after input from 500+ staff/students/families; further revision proposed to School Committee May 2026. Five-pillar framework; bans non-consensual AI deepfakes of real people.",
+    "meta": "~54K students",
+    "source_url": "https://learn.playlab.ai/resources/aipolicies",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Orange County Public Schools (FL)",
+    "level": "district",
+    "category": "guidance",
+    "note": "Released district-level AI policy functioning as informal guidance for other Florida districts in the absence of statewide DOE guidance.",
+    "meta": "~200K students · 8th largest U.S. district",
+    "source_url": "https://www.techpolicy.press/in-the-us-caution-rules-on-ai-ahead-of-k12-school-year/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Alabama",
+    "level": "state",
+    "category": "guidance",
+    "note": "ALSDE AI Policy Template (June 2024), 8 governance pillars.",
+    "source_url": "https://www.aiforeducation.io/s/AL-AI_PolicyTemplate_UPDATED_20240524.docx",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Alaska",
+    "level": "state",
+    "category": "guidance",
+    "note": "AKDEED K-12 AI Framework (2025), 7 guiding principles, rural/cultural focus.",
+    "source_url": "https://education.alaska.gov/State_Board/october-2025/9.1_Alaska%20K12%20AI%20Framework_final_v2.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Arizona",
+    "level": "state",
+    "category": "guidance",
+    "note": "Guidance via Arizona Institute for Education and the Economy.",
+    "source_url": "https://www.aiforeducation.io/s/AZ-NAUGAIGuide.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Arkansas",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "California",
+    "level": "state",
+    "category": "guidance",
+    "note": "CDE guidance (updated April 2026) tied to CA computer-science standards.",
+    "source_url": "https://www.aiforeducation.io/s/Artificial-Intelligence-in-California_Learning-with-AI-Learning-about-AI-CDE-September-2023.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Colorado",
+    "level": "state",
+    "category": "guidance",
+    "note": "State Roadmap for AI in K-12 Education (Aug. 2024).",
+    "source_url": "https://www.aiforeducation.io/s/Colorado-Roadmap-for-AI-in-K-12-Education_August-2024.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Connecticut",
+    "level": "state",
+    "category": "guidance",
+    "note": "Commission for Educational Technology guidance.",
+    "source_url": "https://portal.ct.gov/das/ctedtech/commission-for-educational-technology/initiatives/artificial-intelligence",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Delaware",
+    "level": "state",
+    "category": "guidance",
+    "note": "DDOE guidance uses SAMR model, version-history table.",
+    "source_url": "https://www.aiforeducation.io/s/delaware_generative_ai_guidance.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Florida",
+    "level": "state",
+    "category": "pending",
+    "note": "SB 1194 pending; no DOE guidance identified.",
+    "source_url": "https://www.future-ed.org/legislative-tracker-2026-state-ai-in-education-bills/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Georgia",
+    "level": "state",
+    "category": "guidance",
+    "note": "GaDOE guidance (Jan. 2025), traffic-light system; companion ethics guidance June 2025.",
+    "source_url": "https://www.aiforeducation.io/s/GA-Leveraging-AI-in-the-K-12-Setting.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Hawaii",
+    "level": "state",
+    "category": "guidance",
+    "note": "HIDOE employee guidance; cautions against AI-detection tools.",
+    "source_url": "https://www.aiforeducation.io/s/HIDOE-AI-Guidance-for-Employees.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Idaho",
+    "level": "state",
+    "category": "mandate",
+    "note": "Enacted 2026 legislation (per ExcelinEd); agency guidance not yet published.",
+    "source_url": "https://excelined.org/2026/05/26/state-k-12-ai-policy-in-2026-milestones/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Illinois",
+    "level": "state",
+    "category": "guidance",
+    "note": "ISBE guidance (June 2026, 408pp.), responds to Public Act 104-0399.",
+    "source_url": "https://www.isbe.net/Documents/AIGuidance.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Indiana",
+    "level": "state",
+    "category": "guidance",
+    "note": "State guidance centers AI literacy with computer-science standards.",
+    "source_url": "https://www.aiforeducation.io/s/IN-AI-Guidance-Document-Updated.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Iowa",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Kansas",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Kentucky",
+    "level": "state",
+    "category": "guidance",
+    "note": "KDE guidance frames AI-directed/supported/empowered paradigms.",
+    "source_url": "https://www.aiforeducation.io/s/KY-AI-Guidance-Brief.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Louisiana",
+    "level": "state",
+    "category": "guidance",
+    "note": "LDOE guidance (Fall 2024), four-tier SAMR-aligned system.",
+    "source_url": "https://www.aiforeducation.io/s/LA-ldoe-ai-guidance.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Maine",
+    "level": "state",
+    "category": "guidance",
+    "note": "Interactive toolkit, \"Keep the Human in AI,\" ROOTS leadership framework.",
+    "source_url": "https://view.genially.com/6717d13429a41768c92aa057",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Maryland",
+    "level": "state",
+    "category": "mandate",
+    "note": "Chapter 634 (signed May 26, 2026) requires every LEA to name an AI coordinator; state guidance to follow.",
+    "source_url": "https://novoinnovativepathways.com/state-legislation",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Massachusetts",
+    "level": "state",
+    "category": "guidance",
+    "note": "DESE voluntary guidance built with 14-district task force.",
+    "source_url": "https://www.doe.mass.edu/edtech/ai/ai-guidance.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Michigan",
+    "level": "state",
+    "category": "guidance",
+    "note": "MDE-endorsed Michigan Virtual framework, 3-stage maturity rubric.",
+    "source_url": "https://www.michigan.gov/mde/services/academic-standards/educational-technology/artificial-intelligence",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Minnesota",
+    "level": "state",
+    "category": "guidance",
+    "note": "MDE guidance emphasizes existing policy and equity.",
+    "source_url": "https://www.aiforeducation.io/s/MN-Artificial-Intelligence-in-Education.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Mississippi",
+    "level": "state",
+    "category": "guidance",
+    "note": "MDE guidance organized around 5 digital-learning components.",
+    "source_url": "https://www.aiforeducation.io/s/MS-ai_guidance_final.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Missouri",
+    "level": "state",
+    "category": "guidance",
+    "note": "DESE guidance v1.0 (2025-26 school year), 7-step policy cycle.",
+    "source_url": "https://www.aiforeducation.io/s/AI_Guidance-Accessible.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Montana",
+    "level": "state",
+    "category": "guidance",
+    "note": "OPI/MTDA guidance, tribal-sovereignty and rural-district provisions.",
+    "source_url": "https://opi.mt.gov/Portals/182/Page%20Files/Homepage/Docs/Montana%20Artificial%20Intelligence%20in%20K12%20Education%20Guidelines.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Nebraska",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Nevada",
+    "level": "state",
+    "category": "guidance",
+    "note": "NDE \"STELLAR\" framework, developed via statewide town halls.",
+    "source_url": "https://doe.nv.gov/offices/office-of-teaching-and-learning/nevada-digital-learning",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "New Hampshire",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "New Jersey",
+    "level": "state",
+    "category": "none",
+    "note": "Curated resource hub only; no formal state guidance document.",
+    "source_url": "https://www.nj.gov/education/innovation/ai/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "New Mexico",
+    "level": "state",
+    "category": "guidance",
+    "note": "NMPED AI Guidance 1.0 (May 2025), 5-level AI Assessment Scale.",
+    "source_url": "https://www.aiforeducation.io/s/NM-AI-Guidance-Signed-4-29-2025.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "New York",
+    "level": "state",
+    "category": "pending",
+    "note": "No statewide NYSED framework; 3 competing bills pending. NYC guidance is a de facto standard.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "North Carolina",
+    "level": "state",
+    "category": "guidance",
+    "note": "NCDPI guidance, widely cited as comprehensive/practical.",
+    "source_url": "https://docs.google.com/document/d/1U-AwwwBg7glJ4ZDlcKVzARuFRPWwUWzqRN2rOgT9zlA/edit",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "North Dakota",
+    "level": "state",
+    "category": "guidance",
+    "note": "State guidance includes grade-band implementation roadmap.",
+    "source_url": "https://www.nd.gov/dpi/policyguidelines/north-dakota-k-12-ai-guidance-framework",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Ohio",
+    "level": "state",
+    "category": "guidance",
+    "note": "State AI toolkit synthesizes 21 other guidance documents.",
+    "source_url": "https://www.aiforeducation.io/s/OH-AI-TOOLKIT.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Oklahoma",
+    "level": "state",
+    "category": "guidance",
+    "note": "OSDE guidance includes AI Acceptable Use Rating Scale.",
+    "source_url": "https://www.aiforeducation.io/s/OK-Guidance-and-Considerations-for-Artificial-Intelligence-in-Oklahoma-Schools.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Oregon",
+    "level": "state",
+    "category": "guidance",
+    "note": "ODE guidance tied to Oregon Student Information Protection Act.",
+    "source_url": "https://www.aiforeducation.io/s/Oregon_Generative_Artificial_Intelligence_AI_in_K-12_Classrooms_2023.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Pennsylvania",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Rhode Island",
+    "level": "state",
+    "category": "guidance",
+    "note": "RIDE guidance drew on 1,252 survey respondents.",
+    "source_url": "https://ridoe-my.sharepoint.com/:w:/g/personal/victor_morente_ride_ri_gov/EX_UzMKzP6JCh_Rm8V6TTqYBOaaVrJ1JOnTNFGzPJTlI_g",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "South Carolina",
+    "level": "state",
+    "category": "pending",
+    "note": "H.B. 4582 would authorize statewide AI instruction; not yet enacted.",
+    "source_url": "https://www.future-ed.org/legislative-tracker-2026-state-ai-in-education-bills/",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "South Dakota",
+    "level": "state",
+    "category": "none",
+    "note": "No statewide DOE guidance or enacted K-12 AI mandate identified.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Tennessee",
+    "level": "state",
+    "category": "mandate",
+    "note": "Public Chapter 550 (2024) mandates district AI policies; TSBA Model Policy 4.214 widely adopted.",
+    "source_url": "https://www.aiforeducation.io/ai-resources/state-ai-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Texas",
+    "level": "state",
+    "category": "pending",
+    "note": "No DOE guidance; general public-sector AI duties apply; K-12-specific bills pending.",
+    "source_url": "https://www.truemadeai.com/resources/state-k12-ai-laws-and-guidance",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Utah",
+    "level": "state",
+    "category": "guidance",
+    "note": "USBE framework distinguishes responsible vs. prohibited uses.",
+    "source_url": "https://www.aiforeducation.io/s/Utah-AI_Framework_V2.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Vermont",
+    "level": "state",
+    "category": "guidance",
+    "note": "50-page AOE guidance (Jan. 2026), developmental framework by grade band.",
+    "source_url": "https://www.aiforeducation.io/s/Vermont-edu-aoe-ai-guidance-for-education.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Virginia",
+    "level": "state",
+    "category": "guidance",
+    "note": "State guidance balances AI literacy with privacy/equity.",
+    "source_url": "https://www.aiforeducation.io/s/VA-AI-Education-Guidelines.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Washington",
+    "level": "state",
+    "category": "guidance",
+    "note": "OSPI guidance built on \"Human-AI-Human\" model.",
+    "source_url": "https://www.aiforeducation.io/s/WA-comprehensive-ai-guidance.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "West Virginia",
+    "level": "state",
+    "category": "guidance",
+    "note": "WVDE guidance emphasizes computational thinking as on-ramp.",
+    "source_url": "https://www.aiforeducation.io/s/WVDE-AI-Guidance-v1.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Wisconsin",
+    "level": "state",
+    "category": "guidance",
+    "note": "DPI guidance covers K-12 and public libraries.",
+    "source_url": "https://www.aiforeducation.io/s/WI-AI_Guidance_6-5-24.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  },
+  {
+    "entity": "Wyoming",
+    "level": "state",
+    "category": "guidance",
+    "note": "WDE guidance centers cyclical continuous-improvement process.",
+    "source_url": "https://www.aiforeducation.io/s/WY-Guidance-for-AI-Policy-Development.pdf",
+    "last_verified_date": "2026-09-02",
+    "needs_review": false
+  }
+]

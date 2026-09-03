@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>U.S. AI &amp; Education Policy Tracker</title>
+<style>
+  :root{
+    --navy:#141857;
+    --blue:#2D4EA3;
+    --green:#2B8372;
+    --orange:#D24C09;
+    --bg:#F6F5F1;
+    --card:#FFFFFF;
+    --ink:#1B1D2A;
+    --muted:#6A6D80;
+    --line:#E4E2DB;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Liberation Serif','Times New Roman',serif;
+    font-weight:700;
+    color:var(--navy);
+    margin:0;
+  }
+  a{color:var(--blue);}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* HERO */
+  header.hero{
+    background:var(--navy);
+    color:#fff;
+    padding:56px 0 40px;
+  }
+  header.hero .kicker{
+    color:#B9C0EA;
+    font-size:14px;
+    letter-spacing:.02em;
+    margin-bottom:10px;
+  }
+  header.hero h1{
+    color:#fff;
+    font-size:38px;
+    line-height:1.15;
+    max-width:760px;
+  }
+  header.hero p.sub{
+    color:#CBD0EE;
+    max-width:640px;
+    margin-top:14px;
+    font-size:16px;
+  }
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(255,255,255,.15);
+    margin-top:34px;
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .stat{
+    background:#1B2066;
+    padding:18px 20px;
+  }
+  .stat .num{font-family:'Liberation Serif',serif;font-size:30px;color:#fff;}
+  .stat .lbl{font-size:12.5px;color:#B9C0EA;margin-top:4px;}
+
+  /* SECTION SHELL */
+  section{padding:48px 0;}
+  section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:26px;max-width:680px;}
+  .section-head h2{font-size:26px;}
+  .section-head p{color:var(--muted);margin-top:8px;font-size:15px;}
+
+  /* FEDERAL */
+  .fed-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .fed-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:22px 24px;
+  }
+  .fed-card .date{font-size:12.5px;color:var(--orange);font-weight:600;letter-spacing:.01em;}
+  .fed-card h3{font-size:17px;margin-top:6px;}
+  .fed-card p{font-size:14.5px;color:#3B3D4D;margin-top:10px;}
+  .fed-card .src{margin-top:12px;font-size:13px;}
+
+  /* ACTIVITY FEED */
+  .activity-feed{display:grid;gap:10px;}
+  .activity-item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--green);
+    border-radius:4px;
+    padding:14px 18px;
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:14px;
+    align-items:baseline;
+  }
+  .activity-item .adate{font-size:12px;color:var(--muted);}
+  .activity-item .aentity{font-weight:600;color:var(--navy);font-size:14.5px;}
+  .activity-item .anote{font-size:13.5px;color:#3B3D4D;margin-top:3px;}
+  .activity-item .asrc{font-size:12px;margin-top:5px;}
+  .activity-item .abadge{
+    display:inline-block;font-size:11px;font-weight:600;color:var(--green);
+    border:1px solid var(--green);border-radius:10px;padding:1px 8px;margin-left:8px;
+  }
+  .empty-note{color:var(--muted);font-size:14px;font-style:italic;}
+
+  /* PENDING REVIEW */
+  .pending-panel{
+    background:#FFF8F1;
+    border:1px solid #EFD9BE;
+    border-left:4px solid var(--orange);
+    border-radius:4px;
+    padding:16px 20px;
+    margin-bottom:12px;
+  }
+  .pending-panel .aentity{color:var(--navy);font-weight:600;font-size:14.5px;}
+  .pending-panel .anote{font-size:13.5px;color:#3B3D4D;margin-top:5px;}
+  .pending-panel .pmeta{font-size:12px;color:var(--muted);margin-top:6px;}
+
+  /* CONTROLS */
+  .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .chip{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13.5px;
+    cursor:pointer;
+    color:var(--ink);
+    user-select:none;
+  }
+  .chip.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;position:relative;top:-1px;}
+
+  /* STATE GRID */
+  .state-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:14px;
+  }
+  .state-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:16px 18px;
+    border-top:3px solid var(--muted);
+  }
+  .state-card.cat-guidance{border-top-color:var(--green);}
+  .state-card.cat-mandate{border-top-color:var(--blue);}
+  .state-card.cat-pending{border-top-color:var(--orange);}
+  .state-card.cat-none{border-top-color:#C7C4BA;}
+  .state-card h4{font-size:15.5px;margin:0 0 6px;font-family:'Inter';font-weight:600;color:var(--navy);}
+  .state-card .tag{font-size:11.5px;font-weight:600;text-transform:none;color:var(--muted);}
+  .state-card p{font-size:13px;color:#4A4C5C;margin:8px 0 0;}
+  .state-card a.link{font-size:12.5px;display:inline-block;margin-top:8px;}
+  .state-card[hidden]{display:none;}
+
+  /* DISTRICTS */
+  .district-list{display:grid;gap:14px;}
+  .d-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:18px 22px;
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:18px;
+  }
+  .d-card .meta{color:var(--muted);font-size:13px;}
+  .d-card .meta strong{display:block;color:var(--navy);font-size:16px;font-family:'Liberation Serif',serif;margin-bottom:4px;}
+  .d-card .body p{font-size:14.5px;color:#3B3D4D;margin:0 0 8px;}
+  .d-card .body .src{font-size:12.5px;}
+  @media (max-width:640px){.d-card{grid-template-columns:1fr;}}
+
+  /* METHODOLOGY */
+  .method{
+    background:#EFEEE7;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:22px 26px;
+    font-size:13.5px;
+    color:#4A4C5C;
+  }
+  .method h3{font-size:15px;margin-bottom:8px;color:var(--navy);}
+  .method ul{margin:8px 0 0 18px;padding:0;}
+  .method li{margin-bottom:6px;}
+
+  footer{padding:30px 0 50px;font-size:12.5px;color:var(--muted);}
+  .legend-row{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:14px;}
+  .legend-row span{display:flex;align-items:center;gap:6px;}
+  .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Overdeck Family Foundation &middot; AI &amp; Education Landscape Scan</div>
+    <h1>U.S. AI &amp; Education Policy Tracker</h1>
+    <p class="sub">A working snapshot of federal, state, and district action on artificial intelligence in K&ndash;12 schools &mdash; built for internal grantmaking and program-strategy use. Every entry links to a primary or well-sourced secondary document.</p>
+    <div class="stat-row" id="statRow"></div>
+  </div>
+</header>
+
+<section id="activity">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Recent activity</h2>
+      <p>What the daily check found and applied automatically &mdash; high-confidence updates (an official source, or independent corroboration) are published here directly. Nothing in this list needed a person to confirm it.</p>
+    </div>
+    <div class="activity-feed" id="activityFeed"></div>
+  </div>
+</section>
+
+<section class="alt" id="pending" style="display:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Needs review</h2>
+      <p>Single-source or lower-confidence findings, held here until confirmed rather than published automatically.</p>
+    </div>
+    <div id="pendingList"></div>
+  </div>
+</section>
+
+<section id="federal">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Federal landscape</h2>
+      <p>Two federal actions currently anchor the K&ndash;12 AI policy environment: an executive order setting national priorities, and a Department of Education grant-priority rule that operationalizes it.</p>
+    </div>
+    <div class="fed-grid" id="fedGrid"></div>
+  </div>
+</section>
+
+<section class="alt" id="states">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>State-level guidance &amp; legislation</h2>
+      <p>All 50 states, classified by whether a state education agency has published K&ndash;12 AI guidance, whether the legislature has enacted a mandate without agency guidance yet, or whether neither has been identified in this research pass.</p>
+    </div>
+    <div class="controls" id="stateFilters"></div>
+    <div class="state-grid" id="stateGrid"></div>
+    <div class="legend-row">
+      <span><span class="legend-dot" style="background:var(--green)"></span>State DOE/agency guidance published</span>
+      <span><span class="legend-dot" style="background:var(--blue)"></span>Enacted legislative mandate, agency guidance pending</span>
+      <span><span class="legend-dot" style="background:var(--orange)"></span>Bill(s) pending, not yet enacted</span>
+      <span><span class="legend-dot" style="background:#C7C4BA"></span>No statewide action identified</span>
+    </div>
+  </div>
+</section>
+
+<section id="districts">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Bellwether districts</h2>
+      <p>A seed set of large or influential districts whose policies function as de facto regional standards &mdash; especially in states without statewide guidance. Not comprehensive; see methodology below for how to grow this list.</p>
+    </div>
+    <div class="district-list" id="districtList"></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="method">
+      <h3>Methodology &amp; how this stays current</h3>
+      <ul>
+        <li><strong>This is a live feed, not a fixed snapshot.</strong> A daily job checks every state and federal source against its official page and recent news, and separately scans nationally for district stories that aren't tracked yet. High-confidence findings (an official source, or independent corroboration) are published directly to the data behind this page; lower-confidence findings wait in "Needs review" above.</li>
+        <li><strong>What counts as high confidence:</strong> a primary source (a .gov page, an official agency/board/mayor's-office announcement) or the same fact reported independently by 2+ reputable outlets. A single news outlet with no official confirmation is held for review rather than published automatically.</li>
+        <li><strong>District coverage grows as it's discovered.</strong> The seed set below started as 7 bellwether districts; the daily national scan adds high-confidence new districts directly, and holds lower-confidence ones for review. It will never be a full census of ~13,000 U.S. districts &mdash; large or well-covered districts are what a national news scan can realistically catch.</li>
+        <li><strong>"No action identified" is not the same as "no policy exists."</strong> A state may have district-level or informal guidance not yet captured here; treat blank states as gaps to verify, not confirmed negatives.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="footerText">
+    Sources cited inline throughout. Compiled for OFF internal program use &middot; not for external distribution without review.
+  </div>
+</footer>
+
+<script>
+let WATCHLIST = [];
+let ACTIVITY = [];
+let REVIEW_QUEUE = [];
+
+function catMeta(cat){
+  return {
+    guidance:{label:"Guidance published", color:"var(--green)", cls:"cat-guidance"},
+    mandate:{label:"Legislative mandate, guidance pending", color:"var(--blue)", cls:"cat-mandate"},
+    pending:{label:"Bill(s) pending", color:"var(--orange)", cls:"cat-pending"},
+    none:{label:"No action identified", color:"#C7C4BA", cls:"cat-none"}
+  }[cat] || catMeta('none');
+}
+
+function esc(s){
+  return String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+async function loadData(){
+  const [watchlistRes, activityRes, reviewRes] = await Promise.allSettled([
+    fetch('./data/watchlist.json').then(r => r.json()),
+    fetch('./data/activity-log.json').then(r => r.json()),
+    fetch('./data/review-queue.json').then(r => r.json())
+  ]);
+  WATCHLIST = watchlistRes.status === 'fulfilled' ? watchlistRes.value : [];
+  ACTIVITY = activityRes.status === 'fulfilled' ? activityRes.value : [];
+  REVIEW_QUEUE = reviewRes.status === 'fulfilled' ? reviewRes.value : [];
+
+  if (watchlistRes.status === 'rejected') {
+    document.body.insertAdjacentHTML('afterbegin', `
+      <div style="background:#3B1F1F;color:#FDE8E8;padding:14px 28px;font-size:14px;text-align:center;">
+        Couldn't load the data files. This page needs to be served over http(s) — e.g. via GitHub Pages —
+        not opened directly from disk, since browsers block local-file fetches. If this is already hosted,
+        check that <code>data/watchlist.json</code> exists alongside this file.
+      </div>
+    `);
+  }
+}
+
+function renderStats(){
+  const states = WATCHLIST.filter(e => e.level === 'state');
+  const districts = WATCHLIST.filter(e => e.level === 'district');
+  const counts = {guidance:0, mandate:0, pending:0, none:0};
+  states.forEach(s => { counts[s.category] = (counts[s.category]||0) + 1; });
+  const stats = [
+    {num: counts.guidance||0, lbl:"States with published DOE/agency guidance"},
+    {num: counts.mandate||0, lbl:"States with an enacted mandate, guidance pending"},
+    {num: (counts.pending||0) + (counts.none||0), lbl:"States with no enacted state action yet"},
+    {num: districts.length, lbl:"Districts tracked (grows via daily discovery)"}
+  ];
+  document.getElementById('statRow').innerHTML = stats.map(s=>
+    `<div class="stat"><div class="num">${s.num}</div><div class="lbl">${s.lbl}</div></div>`
+  ).join('');
+}
+
+function timeAgo(dateStr){
+  if(!dateStr) return '';
+  const d = new Date(dateStr);
+  const days = Math.floor((Date.now() - d.getTime()) / 86400000);
+  if (days <= 0) return 'today';
+  if (days === 1) return '1 day ago';
+  return `${days} days ago`;
+}
+
+function renderActivity(){
+  const feed = document.getElementById('activityFeed');
+  const recent = [...ACTIVITY].sort((a,b) => (b.timestamp||'').localeCompare(a.timestamp||'')).slice(0, 15);
+  if (recent.length === 0) {
+    feed.innerHTML = '<p class="empty-note">No auto-published updates yet — this fills in as the daily check runs.</p>';
+    return;
+  }
+  feed.innerHTML = recent.map(a => `
+    <div class="activity-item">
+      <div class="adate">${esc(a.date)}</div>
+      <div>
+        <span class="aentity">${esc(a.entity)}</span>
+        <span class="abadge">${a.change_type === 'new_entity' ? 'new' : 'updated'}</span>
+        <div class="anote">${esc(a.note)}</div>
+        ${a.source_url ? `<div class="asrc"><a href="${a.source_url}" target="_blank" rel="noopener">Source &rarr;</a></div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPending(){
+  const section = document.getElementById('pending');
+  const pending = REVIEW_QUEUE.filter(p => p.status === 'pending_review');
+  if (pending.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+  section.style.display = '';
+  document.getElementById('pendingList').innerHTML = pending.map(p => `
+    <div class="pending-panel">
+      <span class="aentity">${esc(p.entity)}</span>
+      <div class="anote">${esc(p.suggested_note || p.reasoning)}</div>
+      <div class="pmeta">
+        ${p.confidence} confidence &middot; suggested category: ${esc(p.suggested_category)}
+        ${p.evidence_url ? ` &middot; <a href="${p.evidence_url}" target="_blank" rel="noopener">evidence</a>` : ''}
+        &middot; flagged ${esc(p.checked_on)}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderFederal(){
+  const federal = WATCHLIST.filter(e => e.level === 'federal');
+  document.getElementById('fedGrid').innerHTML = federal.map(f=>`
+    <div class="fed-card">
+      <div class="date">Last verified ${esc(f.last_verified_date)}</div>
+      <h3>${esc(f.entity)}</h3>
+      <p>${esc(f.note)}</p>
+      <div class="src"><a href="${f.source_url}" target="_blank" rel="noopener">Source &rarr;</a></div>
+    </div>
+  `).join('');
+}
+
+let activeFilter = 'all';
+function renderStateFilters(){
+  const opts = [
+    {key:'all', label:'All 50 states'},
+    {key:'guidance', label:'Guidance published', color:'var(--green)'},
+    {key:'mandate', label:'Mandate, guidance pending', color:'var(--blue)'},
+    {key:'pending', label:'Bill(s) pending', color:'var(--orange)'},
+    {key:'none', label:'No action identified', color:'#C7C4BA'}
+  ];
+  document.getElementById('stateFilters').innerHTML = opts.map(o=>
+    `<div class="chip ${o.key==='all'?'active':''}" data-key="${o.key}">
+      ${o.color?`<span class="dot" style="background:${o.color}"></span>`:''}${o.label}
+    </div>`
+  ).join('');
+  document.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      activeFilter = chip.dataset.key;
+      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      renderStateGrid();
+    });
+  });
+}
+
+function renderStateGrid(){
+  const states = WATCHLIST.filter(e => e.level === 'state');
+  const grid = document.getElementById('stateGrid');
+  grid.innerHTML = states.map(s=>{
+    const meta = catMeta(s.category);
+    const hidden = (activeFilter!=='all' && activeFilter!==s.category) ? 'hidden' : '';
+    return `<div class="state-card ${meta.cls}" ${hidden}>
+      <h4>${esc(s.entity)}</h4>
+      <div class="tag">${meta.label}</div>
+      <p>${esc(s.note)}</p>
+      ${s.source_url?`<a class="link" href="${s.source_url}" target="_blank" rel="noopener">Source &rarr;</a>`:''}
+    </div>`;
+  }).join('');
+}
+
+function renderDistricts(){
+  const districts = WATCHLIST.filter(e => e.level === 'district');
+  document.getElementById('districtList').innerHTML = districts.map(d=>`
+    <div class="d-card">
+      <div class="meta"><strong>${esc(d.entity)}</strong>${d.meta ? esc(d.meta) : ''}${d.last_verified_date ? ` &middot; verified ${timeAgo(d.last_verified_date)}` : ''}</div>
+      <div class="body">
+        <p>${esc(d.note)}</p>
+        <div class="src"><a href="${d.source_url}" target="_blank" rel="noopener">Source &rarr;</a></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderFooter(){
+  const latest = WATCHLIST.reduce((max, e) => e.last_verified_date > max ? e.last_verified_date : max, '');
+  document.getElementById('footerText').innerHTML =
+    `Sources cited inline throughout. Compiled for OFF internal program use &middot; not for external distribution without review &middot; data current as of ${esc(latest || 'unknown')}.`;
+}
+
+(async function init(){
+  await loadData();
+  renderStats();
+  renderActivity();
+  renderPending();
+  renderFederal();
+  renderStateFilters();
+  renderStateGrid();
+  renderDistricts();
+  renderFooter();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+name: Check AI & education policy updates
+
+on:
+  schedule:
+    # GitHub Actions cron is UTC-only and does not shift for daylight saving,
+    # so two triggers are needed to land on 12:00 noon Eastern year-round:
+    #   16:00 UTC = 12:00 EDT (roughly mid-March to early November)
+    #   17:00 UTC = 12:00 EST (roughly early November to mid-March)
+    # The "Check daylight saving" step below skips whichever one doesn't
+    # match the current Eastern offset, so only one actually runs per day.
+    - cron: "0 16 * * *"
+    - cron: "0 17 * * *"
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab, bypassing the DST check
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Check daylight saving alignment
+        id: dst
+        run: |
+          # Only used for scheduled (cron) runs; manual runs always proceed.
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          hour_utc=$(date -u +%H)
+          eastern_offset=$(TZ="America/New_York" date +%z) # -0400 (EDT) or -0500 (EST)
+          if [ "$eastern_offset" = "-0400" ] && [ "$hour_utc" = "16" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          elif [ "$eastern_offset" = "-0500" ] && [ "$hour_utc" = "17" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Node
+        if: steps.dst.outputs.should_run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run policy check
+        if: steps.dst.outputs.should_run == 'true'
+        id: check
+        continue-on-error: true # lets later steps run even if this exits non-zero (credit-balance halt)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/check-policy-updates.mjs
+
+      - name: Commit dashboard data updates
+        if: steps.dst.outputs.should_run == 'true' && steps.check.outputs.data_changed == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Daily check: ${{ steps.check.outputs.published_count }} auto-published, ${{ steps.check.outputs.review_count }} flagged for review"
+          file_pattern: "data/watchlist.json data/review-queue.json data/activity-log.json"
+
+      - name: Open review issue
+        if: steps.dst.outputs.should_run == 'true' && steps.check.outputs.review_count != '0'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Policy tracker: ${{ steps.check.outputs.review_count }} item(s) need review — ${{ github.run_id }}"
+          content-filepath: ./issue_body.md
+          labels: policy-watch, needs-review
+
+      - name: Open credit-balance alert issue
+        if: steps.dst.outputs.should_run == 'true' && steps.check.outputs.halted_for_credits == 'true'
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Policy tracker paused — Anthropic credit balance too low"
+          content-filepath: ./credit_alert.md
+          labels: policy-watch, billing-alert
+
+      - name: Fail the run if halted for credits
+        if: steps.dst.outputs.should_run == 'true' && steps.check.outputs.halted_for_credits == 'true'
+        run: |
+          echo "Marking this run as failed so it's visible in the Actions tab (and via any repo notification settings)."
+          exit 1
+
