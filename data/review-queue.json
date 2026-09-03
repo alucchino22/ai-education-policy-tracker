@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "type": "update",
+    "entity": "Indiana",
+    "level": "state",
+    "checked_on": "2026-09-03",
+    "current_category": "guidance",
+    "current_note": "State guidance centers AI literacy with computer-science standards.",
+    "suggested_category": "mandate",
+    "suggested_note": "Indiana HB 1296, passed in the 2025 legislative session and effective July 1, 2025, moved the state beyond guidance by requiring school corporations and charter schools to adopt and publicly post AI policies, maintain an AI platform inventory, and prohibiting penalization of students based solely on AI detection tools. The stored record's characterization as non-binding 'guidance' tied to computer-science standards appears outdated; the official IDOE page and IGA tracker confirm the law's existence, though the source URL for the original guidance document was not independently verified as updated.",
+    "confidence": "medium",
+    "evidence_url": "https://www.billtrack50.com/billdetail/1772628",
+    "reasoning": "Multiple independent sources (BillTrack50, launchready.ai, CDT analysis) consistently report that Indiana HB 1296 was enacted in the 2025 legislative session effective July 1, 2025, mandating that schools adopt and post AI policies — elevating Indiana from voluntary guidance to a statutory mandate — but no single .gov page was retrieved that unambiguously confirms the bill's final signed status, warranting medium rather than high confidence.",
+    "status": "pending_review"
+  }
+]
